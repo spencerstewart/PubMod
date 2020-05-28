@@ -48,7 +48,7 @@ function PubMod {
         Start-Sleep 1
     }
 
-    $UserModuleDirectory = $env:PSModulePath -split ';' | Where {$_ -like '*Users*'}
+    $UserModuleDirectory = $env:PSModulePath -split ';' | Where {$_ -like '*Users*'} | Select-Object -First 1
 
     Write-Output "Copying $Path to $UserModuleDirectory"
     Start-Sleep -Milliseconds 500
