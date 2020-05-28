@@ -34,7 +34,7 @@ function PubMod {
         $Path,
         [Parameter(Mandatory=$false)]
         [String]
-        $Repo = "BbmrRepository"
+        $Repo = "LocalPSRepo"
     )
 
     if (!$Path) {
