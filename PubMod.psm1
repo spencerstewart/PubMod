@@ -50,9 +50,12 @@ function PubMod {
 
     $UserModuleDirectory = $env:PSModulePath -split ';' | Where {$_ -like '*Users*'} | Select-Object -First 1
 
-    Write-Output "Copying $Path to $UserModuleDirectory"
-    Start-Sleep -Milliseconds 500
-    Copy-Item $Path $UserModuleDirectory -Recurse -Force
+    $CopyFiles = Read-Host "Copy $Path to $UserModuleDirectory? [Y | n]"
+    if ($CopyFiles -ne 'n') {
+        Write-Output "Copying $Path to $UserModuleDirectory"
+        Copy-Item $Path $UserModuleDirectory -Recurse -Force
+    }
+
 
     $Publish = Read-Host "Publish Module to Repo: $Repo [Y | N]"
     if ($Publish -eq "Y") {
